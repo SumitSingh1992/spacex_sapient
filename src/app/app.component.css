@@ -1,0 +1,112 @@
+/* Css for button */
+.btn-filter{
+    background-color: #aad4aa;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 4px 20px;
+}
+.btn-filter:focus{
+    background-color: #65b365;
+    outline: none;
+    box-shadow: none;
+}
+.filter-title {
+    border-bottom: 2px solid #dee2e6!important;
+    margin: 4px 25px;
+}
+/* css for images */
+.mission_patch{
+    height: 225px;
+    background-color: #e2e2e2;
+    padding: 10px;
+}
+.mission_patch img{
+    width: 100%;
+    height: 100%;
+}
+
+/* css of header area for project name */
+header{
+    position: sticky;
+    top: 0;
+    background-color: #e2e2e2;
+    z-index: 1;
+}
+
+/* css of filter areas */
+.filter-menu{
+    position:  sticky;
+    top: 52px;
+}
+.fixed-bottom{
+    background-color: #e2e2e2;
+}
+.fixed-bottom h5{
+    font-weight: 700 !important;
+}
+
+/* css of descriptions of rocket launch */
+.description{
+    padding: 10px 0px;
+}
+.pad-bottom-15{
+    padding-bottom: 15px;
+}
+.text-muted{
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+h5{
+    font-size: 16px !important;
+}
+
+/* css for loading text and no record text */
+.no-record, .loading{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    font-size: x-large;
+    font-weight: 700;
+}
+/* responsive Tablet 701px to 1024 px*/
+@media (min-width: 701px){
+    .col-md-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+.col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.col-md-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+}
+}
+
+/* responsive desktop 1024px onwards*/
+@media (min-width: 1025px){
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+.col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+.col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.col-lg-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+}
+}
+

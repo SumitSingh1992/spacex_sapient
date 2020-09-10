@@ -1,0 +1,116 @@
+<!-- Header for project name -->
+<header class="font-weight-bold m-1 p-2">
+  <h4>
+    {{title}}
+  </h4>
+</header>
+
+<!-- filters and content area -->
+<div class="container-fluid">
+<div class="content">
+<div class="row">
+  <!-- Filter section -->
+<div class="col-sm-12 col-md-4 col-lg-3">
+  <div class="card bg-white p-2 rounded filter-menu">
+
+    <h5>
+      Filters
+    </h5>
+    <!-- Launch Years Filter -->
+      <div class="text-center filter-title">
+        Launch Year
+      </div>
+      <div class="container text-center">
+        <div class="row">
+          <!-- *ngFor directive to add launch year buttons dynamically -->
+          <div class="col-6" *ngFor="let item of getLaunchYear();">
+            <button class="btn btn-filter m-1" type="button" [value]='item' (click)="filterByLaunchYr(item);">{{item}}</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Is Successful Launch Filter -->
+      <div class="text-center filter-title">
+        Successful Launch
+      </div>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-filter m-1" type="button" value='true' (click)="filterBySuccLaunch(true);">True</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-filter m-1" type="button" value='false' (click)="filterBySuccLaunch(false);">False</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Is Successful Landing Filter -->
+      <div class="text-center filter-title">
+        Successful Landing
+      </div>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-filter m-1" type="button" value='true' (click)="filterBySuccLand(true);">True</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-filter m-1" type="button" value='false' (click)="filterBySuccLand(false);">False</button>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+<!-- Content Section -->
+<div class="col-sm-12 col-md-8 col-lg-9">
+  <!-- show loading data text for few secondds until data loads from API -->
+  <div *ngIf="isLoading" class="text-center loading">Loading data ...</div>
+
+  <!-- show contents after loading data from API -->
+  <div class="row" *ngIf="!isLoading">
+
+    <!-- show loading data text for few secondds until data loads from API -->
+    <div class="text-center no-record" *ngIf="(spaceXData$ | async)?.length==0">No records found.</div>
+
+    <!-- *ngFor directive to add contents dynamically -->
+    <div class="col-sm-12 col-md-6 col-lg-3 pad-bottom-15" *ngFor="let details of spaceXData$ | async">
+      <div class="card bg-white p-3 rounded">
+        <div class="mission_patch">
+          <img [src] = "details.links.mission_patch" alt="mission patch" />
+        </div>
+        <div class="description">
+          <h5 class="text-primary">{{details.mission_name}} # {{details.flight_number}}</h5>
+          <h5>Mission Ids:</h5>
+          <ul>
+            <li class="text-muted" *ngFor="let id of details.mission_id">
+                {{id}}
+            </li>
+            <li class="text-muted" *ngIf="details.mission_id.length == 0">
+              
+          </li>
+          </ul>
+          <h5>Launch Year: <span class="text-muted">{{details.launch_year}}</span></h5>
+          <h5>Successful Launch: <span class="text-muted">{{details.launch_success}}</span></h5>
+          <h5>Successful Landing: <span class="text-muted">{{details.rocket.first_stage.cores[0].land_success}}</span></h5>
+        </div>
+        </div>
+    </div>
+
+    
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- Footer section for developer details -->
+<footer class="text-center font-weight-bold p-2 fixed-bottom">
+  <h5>
+    Developed by: Sumit Kumar
+  </h5>
+</footer>
+
+<!-- directive for routing -->
+<router-outlet></router-outlet>
